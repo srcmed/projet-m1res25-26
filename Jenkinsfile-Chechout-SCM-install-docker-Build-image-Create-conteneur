@@ -21,7 +21,7 @@ pipeline {
                   sh 'sudo chmod 666 /var/run/docker.sock'
                   sh 'sudo usermod -aG docker $USER'
                   sh 'sudo usermod -aG docker jenkins'
-                  sh 'sudo systemctl status docker.service'
+                  sh 'sudo systemctl start docker.service'
               }
           }
 
