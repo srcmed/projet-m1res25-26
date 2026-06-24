@@ -15,7 +15,6 @@ pipeline {
                      steps {
                         script {
               sh 'docker build -t mynginx .'
-              sh 'docker tag mynginx:v0.1'
                         }
               }
           }
