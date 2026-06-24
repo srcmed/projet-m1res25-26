@@ -28,6 +28,8 @@ pipeline {
              stage('build-image Ubuntu/nginx') {
                      steps {
                         script {
+              sh 'docker stop monapp'
+              sh 'docker rm monapp'
               sh 'docker image rm mynginx:latest'
               sh 'docker build -t mynginx .'
               sh 'docker image ls'
@@ -37,9 +39,7 @@ pipeline {
                stage('Deploiement conteneur') {
                       steps {
                            script {
-                              sh 'docker stop monapp'
-                              sh 'docker rm monapp'
-                              sh 'docker run -d --name monapp --hostname monapp -p 8585:80 mynginx:latest'
+                           sh 'docker run -d --name monapp --hostname monapp -p 8585:80 mynginx:latest'
                            }
                       }
             }
